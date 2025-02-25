@@ -6,15 +6,16 @@ import Signin from "../pages/Signin";
 const Navbar = () => {
   const [expanded, setExpanded] = useState(false);
   return (
-    <header className="py-4 bg-black sm:py-6">
-      <div className="px-4 sm:px-6 lg:px-8">
+    <header className="py-4 bg-black sm:py-6 ">
+     <div className="mx-auto max-w-[1400px]">
+     <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="shrink-0">
             <Link to="/" title="" className="flex">
               <img
                 className="w-auto h-9"
-                src="https://landingfoliocom.imgix.net/store/collection/dusk/images/logo.svg"
-                alt=""
+                 src="https://landingfoliocom.imgix.net/store/collection/dusk/images/logo.svg"
+                alt="VedaVanni"
               />
             </Link>
           </div>
@@ -121,6 +122,7 @@ const Navbar = () => {
           </nav>
         )}
       </div>
+     </div>
     </header>
   );
 };

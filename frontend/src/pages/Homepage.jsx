@@ -5,14 +5,16 @@ import AboutUs from '@/components/AboutUs';
 
 export default function Homepage() {
   return (
-    <div className='flex flex-col justify-center items-center max-w-[1400px]'>
+    <div className='flex flex-col justify-center items-center'>
+      <div className="mx-auto max-w-[1400px]">
+      <div>
        <HeroSection
       title="Welcome to Our Platform"
       subtitle={{
-        regular: "Transform your ideas into ",
-        gradient: "beautiful digital experiences",
+        regular: "VedaVanni ",
+        gradient: "Ancient Wisdom in Modern Dialogue",
       }}
-      description="Transform your ideas into reality with our comprehensive suite of development tools and resources."
+      description="The wisdom of an Ayurvedic physician in your pocket. VaidyaVirtual offers personalized consultations, analyzing your unique constitutional patterns to provide customized dietary, herbal, and lifestyle recommendations."
       ctaText="Get Started"
       ctaHref="/signup"
       gridOptions={{
@@ -23,8 +25,10 @@ export default function Homepage() {
         darkLineColor: "#2a2a2a",
       }}
     />
+    </div>
       <Features/>
       <AboutUs/>
+      </div>
     </div>
   );
 }

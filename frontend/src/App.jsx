@@ -2,15 +2,18 @@ import { Route, Routes } from "react-router";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Homepage from "./pages/Homepage";
+// import Signin from "./pages/Signin";
 
 function App() {
   return (
     <>
-      <Navbar />
+      
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        
+        <Route path="/" element={<> <Navbar/> <Homepage /><Footer/></>} />
+        {/* <Route path="/signin" element={<Signin />} /> */}
       </Routes>
-      <Footer></Footer>
+    
     </>
   );
 }

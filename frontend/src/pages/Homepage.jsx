@@ -5,7 +5,7 @@ import AboutUs from '@/components/AboutUs';
 
 export default function Homepage() {
   return (
-    <div>
+    <div className='flex flex-col justify-center items-center max-w-[1400px]'>
        <HeroSection
       title="Welcome to Our Platform"
       subtitle={{

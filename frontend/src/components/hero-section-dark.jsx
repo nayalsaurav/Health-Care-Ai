@@ -1,6 +1,6 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
-import { ChevronRight } from "lucide-react"
+import * as React from "react";
+import { cn } from "@/lib/utils";
+import { ChevronRight } from "lucide-react";
 
 const RetroGrid = ({
   angle = 65,
@@ -14,25 +14,24 @@ const RetroGrid = ({
     "--cell-size": `${cellSize}px`,
     "--opacity": opacity,
     "--light-line": lightLineColor,
-    "--dark-line": darkLineColor
-  }
+    "--dark-line": darkLineColor,
+  };
 
   return (
-    (<div
+    <div
       className={cn(
         "pointer-events-none absolute size-full overflow-hidden [perspective:200px]",
         `opacity-[var(--opacity)]`
       )}
-      style={gridStyles}>
+      style={gridStyles}
+    >
       <div className="absolute inset-0 [transform:rotateX(var(--grid-angle))]">
-        <div
-          className="animate-grid [background-image:linear-gradient(to_right,var(--light-line)_1px,transparent_0),linear-gradient(to_bottom,var(--light-line)_1px,transparent_0)] [background-repeat:repeat] [background-size:var(--cell-size)_var(--cell-size)] [height:300vh] [inset:0%_0px] [margin-left:-200%] [transform-origin:100%_0_0] [width:600vw] dark:[background-image:linear-gradient(to_right,var(--dark-line)_1px,transparent_0),linear-gradient(to_bottom,var(--dark-line)_1px,transparent_0)]" />
+        <div className="animate-grid [background-image:linear-gradient(to_right,var(--light-line)_1px,transparent_0),linear-gradient(to_bottom,var(--light-line)_1px,transparent_0)] [background-repeat:repeat] [background-size:var(--cell-size)_var(--cell-size)] [height:300vh] [inset:0%_0px] [margin-left:-200%] [transform-origin:100%_0_0] [width:600vw] dark:[background-image:linear-gradient(to_right,var(--dark-line)_1px,transparent_0),linear-gradient(to_bottom,var(--dark-line)_1px,transparent_0)]" />
       </div>
-      <div
-        className="absolute inset-0 bg-gradient-to-t from-white to-transparent to-90% dark:from-black" />
-    </div>)
+      <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent to-90% dark:from-black" />
+    </div>
   );
-}
+};
 
 const HeroSection = React.forwardRef((
   {
@@ -70,14 +69,13 @@ const HeroSection = React.forwardRef((
             </h1>
             <h2
               className="text-4xl tracking-tighter font-geist bg-clip-text text-transparent mx-auto md:text-6xl bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]">
-              
+              {subtitle.regular}
               <span
                 className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500 dark:from-purple-300 dark:to-orange-200">
-                {subtitle.regular}
+                {subtitle.gradient}
               </span>
-              {subtitle.gradient}
             </h2>
-            <p className="max-w-2xl mx-auto px-4 text-center text-gray-600 dark:text-gray-300 leading-relaxed sm:text-lg md:text-xl">
+            <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
               {description}
             </p>
             <div
@@ -104,4 +102,4 @@ const HeroSection = React.forwardRef((
 })
 HeroSection.displayName = "HeroSection"
 
-export { HeroSection }
+export { HeroSection };

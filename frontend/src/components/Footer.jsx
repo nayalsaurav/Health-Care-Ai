@@ -4,7 +4,6 @@ import { Link } from "react-router";
 const Footer = () => {
   return (
     <footer className="bg-white dark:bg-black">
-       <div className="mx-auto max-w-[1400px]">
       <div className="mx-auto w-full py-6 lg:py-8 px-4 sm:px-6 lg:px-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">

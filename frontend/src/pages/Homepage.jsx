@@ -1,177 +1,37 @@
-import { useState } from "react";
+import { Link } from "react-router";
 
 export default function Homepage() {
-  const [expanded, setExpanded] = useState(false);
-
   return (
     <div>
-      <header className="py-4 bg-black sm:py-6">
-        <div className="px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            <div className="shrink-0">
-              <a href="#" title="" className="flex">
-                <img
-                  className="w-auto h-9"
-                  src="https://landingfoliocom.imgix.net/store/collection/dusk/images/logo.svg"
-                  alt=""
-                />
-              </a>
-            </div>
-
-            {/* Mobile Menu Toggle */}
-            <div className="flex md:hidden">
-              <button
-                type="button"
-                className="text-white"
-                onClick={() => setExpanded(!expanded)}
-                aria-expanded={expanded}
-              >
-                {expanded ? (
-                  <svg
-                    className="w-7 h-7"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    className="w-7 h-7"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="1.5"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
-                )}
-              </button>
-            </div>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden space-x-10 md:flex md:items-center md:justify-center lg:space-x-12">
-              <a
-                href="#"
-                className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"
-              >
-                Products
-              </a>
-              <a
-                href="#"
-                className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"
-              >
-                Features
-              </a>
-              <a
-                href="#"
-                className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"
-              >
-                Pricing
-              </a>
-              <a
-                href="#"
-                className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"
-              >
-                Support
-              </a>
-            </nav>
-
-            <div className="relative hidden md:inline-flex group">
-              <div className="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:shadow-lg group-hover:shadow-cyan-500/50"></div>
-              <a
-                href="#"
-                className="relative inline-flex items-center justify-center px-6 py-2 text-base font-normal text-white bg-black border border-transparent rounded-full"
-              >
-                Start free trial
-              </a>
-            </div>
-          </div>
-
-          {/* Mobile Navigation */}
-          {expanded && (
-            <nav>
-              <div className="flex flex-col pt-8 pb-4 space-y-6">
-                <a
-                  href="#"
-                  className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"
-                >
-                  Products
-                </a>
-                <a
-                  href="#"
-                  className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"
-                >
-                  Features
-                </a>
-                <a
-                  href="#"
-                  className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"
-                >
-                  Pricing
-                </a>
-                <a
-                  href="#"
-                  className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"
-                >
-                  Support
-                </a>
-                <div className="relative inline-flex items-center justify-center group">
-                  <div className="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:shadow-lg group-hover:shadow-cyan-500/50"></div>
-                  <a
-                    href="#"
-                    className="relative inline-flex items-center justify-center w-full px-6 py-2 text-base font-normal text-white bg-black border border-transparent rounded-full"
-                  >
-                    Start free trial
-                  </a>
-                </div>
-              </div>
-            </nav>
-          )}
-        </div>
-      </header>
-
-      {/* Hero Section */}
       <section className="relative pt-12 overflow-hidden bg-black sm:pt-16">
         <div className="relative px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-sm font-normal tracking-widest uppercase">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-500">
-                Your startup needs a kick
+                AI-Powered Ayurveda: Your Personalized Path to Wellness
               </span>
             </p>
             <h1 className="mt-8 text-4xl font-normal text-white sm:text-5xl lg:text-6xl xl:text-7xl">
-              Connect & grow with your targeted customers
+              AI Meets Ayurveda: Smart, Holistic, and Personalized Healthcare
             </h1>
 
             <div className="flex flex-col items-center justify-center px-8 mt-12 space-y-5 sm:flex-row sm:space-y-0 sm:space-x-5">
               <div className="relative inline-flex items-center justify-center w-full sm:w-auto group">
                 <div className="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:shadow-lg group-hover:shadow-cyan-500/50"></div>
-                <a
-                  href="#"
+                <Link
+                  to="#"
                   className="relative inline-flex items-center justify-center w-full px-8 py-3 text-base font-normal text-white bg-black border border-transparent rounded-full sm:w-auto"
                 >
-                  Start 14 Days Free Trial
-                </a>
+                  Get Started
+                </Link>
               </div>
 
-              <a
-                href="#"
+              <Link
+                to="#"
                 className="inline-flex items-center justify-center w-full px-8 py-3 text-base font-normal text-white transition-all duration-200 bg-black border border-gray-600 rounded-full sm:w-auto hover:border-white"
               >
                 Talk to Sales
-              </a>
+              </Link>
             </div>
           </div>
 

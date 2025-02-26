@@ -5,28 +5,30 @@ const router = express.Router();
 
 // Route for User Sign-up
 router.post("/signup", async (req, res) => {
-  const { email, password } = req.body;
+  const {fullName, email, password} = req.body;
+  console.log(fullName , email , password);
 
-  if (!email || !password) {
+  if (!email || !password || !fullName) {
     return res
       .status(400)
-      .json({ error: "❌ Email and Password are required" });
+      .json({success: true , message: `Email, Password or Full Name is required!` });
   }
 
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
+    fullName,
   });
 
   if (error) {
     return res
       .status(400)
-      .json({ error: `❌ Sign-up failed: ${error.message}` });
+      .json({success: false ,message: `❌ Sign-up failed: ${error.message}` });
   }
 
   res
     .status(201)
-    .json({ message: "✅ User created successfully!", user: data.user });
+    .json({success: true, message: "✅ User created successfully!", user: data.user });
 });
 
 // Route for User Sign-in
@@ -36,7 +38,7 @@ router.post("/signin", async (req, res) => {
   if (!email || !password) {
     return res
       .status(400)
-      .json({ error: "❌ Email and Password are required" });
+      .json({success: true, message: "❌ Email and Password are required" });
   }
 
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -47,7 +49,7 @@ router.post("/signin", async (req, res) => {
   if (error) {
     return res
       .status(401)
-      .json({ error: `❌ Sign-in failed: ${error.message}` });
+      .json({success: false ,message: `❌ Sign-in failed: ${error.message}` });
   }
 
   res.status(200).json({ message: "✅ Sign-in successful", user: data.user });
@@ -60,7 +62,7 @@ router.get("/verifyMe", async (req, res) => {
   if (!token) {
     return res
       .status(401)
-      .json({ error: "❌ Unauthorized: No token provided" });
+      .json({success:true, message: "❌ Unauthorized: No token provided" });
   }
 
   const { data, error } = await supabase.auth.getUser(
@@ -70,10 +72,10 @@ router.get("/verifyMe", async (req, res) => {
   if (error) {
     return res
       .status(401)
-      .json({ error: `❌ Verification failed: ${error.message}` });
+      .json({success:false ,message: `❌ Verification failed: ${error.message}` });
   }
 
-  res.status(200).json({ message: "✅ User verified!", user: data.user });
+  res.status(200).json({success: true, message: "✅ User verified!", user: data.user });
 });
 
 export default router;

@@ -8,12 +8,13 @@ import { Chatbot } from "./components/Chatbot";
 function App() {
   return (
     <>
-       <Navbar></Navbar>
+       {/* <Navbar></Navbar> */}
       <Routes>
        
-        <Route path="/" element={<>  <Homepage /><Footer/></>} />
+        <Route path="/" element={<> <Navbar/> <Homepage /><Footer/></>} />
         {/* <Route path="/signin" element={<Signin />} /> */}
         <Route path="/chatbot" element={<Chatbot></Chatbot>} />
+        <Route path="/chatbot/:id" element={<Chatbot></Chatbot>} />
       </Routes>
     
     </>

@@ -15,8 +15,8 @@ export default function Homepage() {
         gradient: "Ancient Wisdom in Modern Dialogue",
       }}
       description="The wisdom of an Ayurvedic physician in your pocket. VaidyaVirtual offers personalized consultations, analyzing your unique constitutional patterns to provide customized dietary, herbal, and lifestyle recommendations."
-      ctaText="Get Started"
-      ctaHref="/signup"
+      ctatext="Get Started"
+      ctahref="/signup"
       gridOptions={{
         angle: 65,
         opacity: 0.4,

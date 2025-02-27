@@ -1,12 +1,14 @@
 import {PrismaClient} from '@prisma/client';
 const prisma = new PrismaClient();
-const express = require("express");
-const conversationController = require("../controllers/conversationController");
+import express from "express";
+// import conversationController from "../controllers/conversationController";
 const conversationRouter = express.Router();
+import { getConversations, newConversation, newMessage, deleteConversation } from "../controllers/conversationController.js";
 
-conversationRouter.get("/conversation", conversationController.getConversations);
-conversationRouter.post("/conversation", conversationController.newConversation);
-conversationRouter.put("/conversation/:id", conversationController.newMessage);
-conversationRouter.delete("/conversation/:id", conversationController.deleteConversation);
 
-module.exports = conversationRouter;
+conversationRouter.get("/conversations", getConversations);
+conversationRouter.post("/conversation", newConversation);
+conversationRouter.put("/conversation/:id", newMessage);
+conversationRouter.delete("/conversation/:id", deleteConversation);
+
+export default conversationRouter;

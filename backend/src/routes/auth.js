@@ -7,7 +7,6 @@ const router = express.Router();
 router.post("/signup", async (req, res) => {
   const {fullName, email, password} = req.body;
   console.log(fullName , email , password);
-
   if (!email || !password || !fullName) {
     return res
       .status(400)

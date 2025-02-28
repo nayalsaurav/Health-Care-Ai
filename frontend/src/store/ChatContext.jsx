@@ -22,7 +22,7 @@ export const ChatProvider = ({ children }) => {
     fetch("http://localhost:3000/api/v1/chatbot/conversations")
       .then((res) => res.json())
       .then((data) => {
-        setChats(data || []);
+        setChats(data.reverse() || []);
       })
       .catch((error) => {
         setError(error);
@@ -59,7 +59,7 @@ export const ChatProvider = ({ children }) => {
         messages: [userMessage, aiMessage]
       };
 
-      setChats((prevChats) => [...prevChats, newChat]);
+      setChats((prevChats) => [newChat,...prevChats]);
       return newChat;
     } catch (error) {
       console.error("Error adding chat:", error);

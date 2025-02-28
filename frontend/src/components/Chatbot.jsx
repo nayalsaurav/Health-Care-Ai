@@ -90,7 +90,7 @@ export function Chatbot() {
       } else {
         // Create new conversation
         const newChat = await addChat(input);
-        navigate(`/chatbot/${newChat.id}`);
+        navigate(`/dashboard/chatbot/${newChat.id}`);
       }
     } catch (error) {
       console.error("Error sending message:", error);
@@ -101,12 +101,8 @@ export function Chatbot() {
   };
 
   return (
-    <div className="h-screen w-full flex flex-row">
+    <div className="h-screen w-fit mx-auto flex flex-col md:flex-row">
       {/* Sidebar - Hidden on mobile by default */}
-      <div className="block md:w-64 flex-shrink-0">
-        <SideBar2 />
-      </div>
-
       {/* Main Chat Area */}
       <div className="flex-1 flex flex-col h-full">
         {/* Chat Messages */}

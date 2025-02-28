@@ -1,23 +1,22 @@
-import { Route, Routes } from "react-router";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
-import Homepage from "./pages/Homepage";
-// import Signin from "./pages/Signin";
+import { Route, Routes } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
 import { Chatbot } from "./components/Chatbot";
+import Homepage from "./pages/Homepage";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
 
 function App() {
   return (
-    <>
-       {/* <Navbar></Navbar> */}
-      <Routes>
-       
-        <Route path="/" element={<> <Navbar/> <Homepage /><Footer/></>} />
-        {/* <Route path="/signin" element={<Signin />} /> */}
-        <Route path="/chatbot" element={<Chatbot></Chatbot>} />
-        <Route path="/chatbot/:id" element={<Chatbot></Chatbot>} />
-      </Routes>
-    
-    </>
+    <Routes>
+      {/* Dashboard route with nested child routes */}
+      <Route path="/" element={<><Navbar/><Homepage /><Footer/></>} />
+      <Route path="/dashboard" element={<Dashboard />}>
+        {/* Define child routes inside Dashboard */}
+        <Route path="chatbot" element={<Chatbot />} />
+        <Route path="chatbot/:id" element={<Chatbot />} />
+      </Route>
+    </Routes>
   );
 }
 

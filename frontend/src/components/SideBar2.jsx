@@ -35,32 +35,32 @@ const menuItems = [
   {
     icon: MessageSquare,
     title: "Chat",
-    path: "/chatbot"
+    path: "/dashboard/chatbot"
   },
   {
     icon: Calendar,
     title: "Schedule",
-    path: "/schedule"
+    path: "/dashboard/schedule"
   },
   {
     icon: MapPin,
     title: "Find",
-    path: "/findHosp"
+    path: "/dashboard/findHosp"
   },
   {
     icon: Pill,
     title: "Medicines",
-    path: "/medicine"
+    path: "/dashboard/medicine"
   },
   {
     icon: AlertTriangle,
     title: "Emergency SOS",
-    path: "/emergency" 
+    path: "/dashboard/emergency" 
   },
   {
     icon: Activity,
     title: "Health Tracker",
-    path: "/tracker"
+    path: "/dashboard/tracker"
   },
 
 ]

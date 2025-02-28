@@ -7,14 +7,10 @@ const Footer = () => {
       <div className="mx-auto w-full py-6 lg:py-8 px-4 sm:px-6 lg:px-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
-            <Link to="https://flowbite.com/" className="flex items-center">
-              <img
-                src="https://flowbite.com/docs/images/logo.svg"
-                className="h-8 me-3"
-                alt="FlowBite Logo"
-              />
-              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                Flowbite
+            <Link to="/" className="flex items-center">
+              
+              <span className="self-center text-2xl font-semibold whitespace-nowrap bg-gradient-to-r from-fuchsia-300 to-yellow-300 bg-clip-text text-transparent">
+                VedaVanni
               </span>
             </Link>
           </div>
@@ -25,8 +21,8 @@ const Footer = () => {
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-4">
-                  <a href="https://flowbite.com/" className="hover:underline">
-                    Flowbite
+                  <a href="/" className="hover:underline">
+                    VedaVanni
                   </a>
                 </li>
                 <li>
@@ -83,7 +79,7 @@ const Footer = () => {
           <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
             © 2025{" "}
             <a href="https://flowbite.com/" className="hover:underline">
-              Flowbite™
+              VedaVanni™
             </a>
             . All Rights Reserved.
           </span>

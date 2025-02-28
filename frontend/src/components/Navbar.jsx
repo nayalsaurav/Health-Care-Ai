@@ -1,7 +1,7 @@
+import { Signin } from "@/pages/Signin";
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router";
-import Signin from "../pages/Signin";
 
 const Navbar = () => {
   const [expanded, setExpanded] = useState(false);
@@ -12,11 +12,12 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <div className="shrink-0">
             <Link to="/" title="" className="flex">
-              <img
+              {/* <img
                 className="w-auto h-9"
                  src="https://landingfoliocom.imgix.net/store/collection/dusk/images/logo.svg"
                 alt="VedaVanni"
-              />
+              /> */}
+              <span className="text-2xl bg-gradient-to-r from-fuchsia-300 to-yellow-300 bg-clip-text text-transparent">VedaVanni</span>
             </Link>
           </div>
 
@@ -83,12 +84,12 @@ const Navbar = () => {
             >
               Support
             </Link>
-          </nav>
-
-          <div className="relative hidden md:inline-flex group">
+          <div className="relative inline-flex group">
             {/* <div className="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:shadow-lg group-hover:shadow-cyan-500/50"></div> */}
             <Signin/>
+
           </div>
+          </nav>
         </div>
 
         {/* Mobile Navigation */}
@@ -115,7 +116,7 @@ const Navbar = () => {
                 Support
               </Link>
               <div className="relative inline-flex items-center justify-center group">
-                <div className="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:shadow-lg group-hover:shadow-cyan-500/50"></div>
+                {/* <div className="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:shadow-lg group-hover:shadow-cyan-500/50"></div> */}
                <Signin/>
               </div>
             </div>

@@ -9,14 +9,62 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useId } from "react";
+import { useId, useState } from "react";
 
-export default function Signup() {
+import axios from "axios";
+import { Signin } from "./Signin";
+
+function Signup({ buttonName }) {
   const id = useId();
+
+  // State to manage form data
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    password: "",
+  });
+
+  // State for handling loading and error messages
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
+
+  // Handle input change
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    setLoading(true);
+    setError(null);
+    setSuccess(null);
+
+    try {
+      // Replace with your backend API URL
+      const response = await axios.post("http://localhost:3000/api/v1/auth/signup", formData);
+      setSuccess("Signup successful! Welcome aboard.");
+      console.log(response.data); // Log the response from the server
+    } catch (error) {
+      setError("There was an error with your signup. Please try again.");
+      console.error(error);
+    } finally {
+      setLoading(false);
+      // Optionally reset the form data
+      setFormData({ fullName: "", email: "", password: "" });
+    }
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Sign up</Button>
+        <Button variant="outline">{buttonName}</Button>
       </DialogTrigger>
       <DialogContent>
         <div className="flex flex-col items-center gap-2">
@@ -36,36 +84,59 @@ export default function Signup() {
             </svg>
           </div>
           <DialogHeader>
-            <DialogTitle className="sm:text-center">Sign up Origin UI</DialogTitle>
+            <DialogTitle className="sm:text-center">Sign up</DialogTitle>
             <DialogDescription className="sm:text-center">
-              We just need a few details to get you started.
+              Already have an account? <Signin />
             </DialogDescription>
           </DialogHeader>
         </div>
 
-        <form className="space-y-5">
+        <form className="space-y-5" onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor={`${id}-name`}>Full name</Label>
-              <Input id={`${id}-name`} placeholder="Matt Welsh" type="text" required />
+              <Input
+                id={`${id}-name`}
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleChange}
+                placeholder="Matt Welsh"
+                type="text"
+                required
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor={`${id}-email`}>Email</Label>
-              <Input id={`${id}-email`} placeholder="hi@yourcompany.com" type="email" required />
+              <Input
+                id={`${id}-email`}
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="hi@yourcompany.com"
+                type="email"
+                required
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor={`${id}-password`}>Password</Label>
               <Input
                 id={`${id}-password`}
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
                 placeholder="Enter your password"
                 type="password"
                 required
               />
             </div>
           </div>
-          <Button type="button" className="w-full">
-            Sign up
+
+          <Button type="submit" className="w-full" disabled={loading}>
+            {loading ? "Signing up..." : "Sign up"}
           </Button>
+
+          {error && <p className="text-red-500 text-center mt-2">{error}</p>}
+          {success && <p className="text-green-500 text-center mt-2">{success}</p>}
         </form>
 
         <div className="flex items-center gap-3 before:h-px before:flex-1 before:bg-border after:h-px after:flex-1 after:bg-border">
@@ -86,4 +157,4 @@ export default function Signup() {
   );
 }
 
-
+export { Signup };

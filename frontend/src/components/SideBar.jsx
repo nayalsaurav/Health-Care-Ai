@@ -43,7 +43,7 @@ const SideBar = ({ isCollapsed }) => {
 
   const toggleTheme = () => setDarkMode((prev) => !prev);
 
-  const handleNewChat = () => navigate("/chatbot");
+  const handleNewChat = () => navigate("/dashboard/chatbot");
 
   return (
     <div className="flex flex-col h-full">
@@ -52,16 +52,6 @@ const SideBar = ({ isCollapsed }) => {
         {!isCollapsed && (
           <h1 className="text-sm md:text-lg font-semibold">Chat History</h1>
         )}
-        <button 
-          onClick={toggleTheme} 
-          className="p-1.5 md:p-2 hover:bg-accent rounded-md transition-colors"
-        >
-          {darkMode ? (
-            <Moon className="h-4 w-4 md:h-5 md:w-5" />
-          ) : (
-            <Sun className="h-4 w-4 md:h-5 md:w-5" />
-          )}
-        </button>
       </div>
 
       {/* New Chat Button */}
@@ -94,7 +84,7 @@ const SideBar = ({ isCollapsed }) => {
             {chats.map((chat) => (
               <div key={chat.id} className="group relative">
                 <Link 
-                  to={`/chatbot/${chat.id}`}
+                  to={`/dashboard/chatbot/${chat.id}`}
                   className="flex flex-col w-full p-2 md:p-3 rounded-md hover:bg-accent transition-colors"
                 >
                   {!isCollapsed && (
@@ -114,7 +104,7 @@ const SideBar = ({ isCollapsed }) => {
                       e.preventDefault();
                       e.stopPropagation();
                       deleteChat(chat.id);
-                      navigate("/chatbot");
+                      navigate("/dashboard/chatbot");
                     }}
                     className="absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 p-1.5 md:p-2 hover:bg-destructive/10 rounded-md transition-all"
                   >

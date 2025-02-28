@@ -1,6 +1,6 @@
 import { SidebarProvider } from "@/components/ui/sidebar"
 import SideBar from './SideBar'
-import { Home, MessageSquare, Calendar, Settings, User2, LogOut, Menu } from "lucide-react"
+import { Home, MessageSquare, Calendar, Settings, User2, LogOut, Menu , MapPin , Pill , AlertTriangle , Activity } from "lucide-react"
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
@@ -43,10 +43,26 @@ const menuItems = [
     path: "/schedule"
   },
   {
-    icon: Settings,
-    title: "Settings",
-    path: "/settings"
-  }
+    icon: MapPin,
+    title: "Find",
+    path: "/findHosp"
+  },
+  {
+    icon: Pill,
+    title: "Medicines",
+    path: "/medicine"
+  },
+  {
+    icon: AlertTriangle,
+    title: "Emergency SOS",
+    path: "/emergency" 
+  },
+  {
+    icon: Activity,
+    title: "Health Tracker",
+    path: "/tracker"
+  },
+
 ]
 
 export default function SideBar2() {

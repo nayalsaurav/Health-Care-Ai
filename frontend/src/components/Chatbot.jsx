@@ -101,9 +101,9 @@ export function Chatbot() {
   };
 
   return (
-    <div className="h-screen w-full flex flex-col md:flex-row">
+    <div className="h-screen w-full flex flex-row">
       {/* Sidebar - Hidden on mobile by default */}
-      <div className="hidden md:block md:w-64 flex-shrink-0">
+      <div className="block md:w-64 flex-shrink-0">
         <SideBar2 />
       </div>
 

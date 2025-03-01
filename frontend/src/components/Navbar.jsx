@@ -1,10 +1,10 @@
-import { Signin } from "@/pages/Signin";
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const Navbar = () => {
   const [expanded, setExpanded] = useState(false);
+  const navigate = useNavigate();
   return (
     <header className="py-4 bg-black sm:py-6 ">
      <div className="mx-auto max-w-[1400px]">
@@ -85,8 +85,8 @@ const Navbar = () => {
               Support
             </Link>
           <div className="relative inline-flex group">
-            {/* <div className="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:shadow-lg group-hover:shadow-cyan-500/50"></div> */}
-            <Signin/>
+            <div className="absolute -z-99 transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:shadow-lg group-hover:shadow-cyan-500/50"></div>
+            <button onClick={()=>{navigate('/signin')}}>Sign in</button>
 
           </div>
           </nav>
@@ -116,8 +116,8 @@ const Navbar = () => {
                 Support
               </Link>
               <div className="relative inline-flex items-center justify-center group">
-                {/* <div className="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:shadow-lg group-hover:shadow-cyan-500/50"></div> */}
-               <Signin/>
+                <div className="absolute -z-50 transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:shadow-lg group-hover:shadow-cyan-500/50"></div>
+                <button onClick={()=>{navigate('/signin')}}>Sign in</button>
               </div>
             </div>
           </nav>

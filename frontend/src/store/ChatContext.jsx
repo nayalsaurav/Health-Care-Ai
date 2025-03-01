@@ -8,7 +8,7 @@ export const ChatProvider = ({ children }) => {
   const [chats, setChats] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const [isLoggedin, setIsLoggedin] = useState(false);
   // Initial AI message
   const initialAIMessage = {
     id: uuid(),
@@ -32,11 +32,42 @@ export const ChatProvider = ({ children }) => {
       });
   }, []);
 
+  // const verify = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       "http://localhost:3000/api/v1/auth/verify",
+  //       {
+  //         headers:{
+  //           Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
+  //         }
+  //       }
+  //     );
+  //     setIsLoggedin(true);
+  //     localStorage.setItem("jwt_token", response.data.jwt_token);
+  //   } catch (error) {
+  //     console.error("Error verifying user:", error);
+  //     setIsLoggedin(false);
+  //   }
+  // };
+  // useEffect(() => {
+  //   const fetch = async ()=>{await verify()};
+  //   fetch();
+  // }, [])
+  
+
   const addChat = async (message) => {
     try {
-      const response = await axios.post("http://localhost:3000/api/v1/chatbot/conversation", {
-        prompt: message
-      });
+      const response = await axios.post(
+        "http://localhost:3000/api/v1/chatbot/conversation",
+        {
+          prompt: message,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt_token")}`,
+          },
+        }
+      );
 
       const timestamp = new Date().toISOString();
       const userMessage = {
@@ -69,7 +100,14 @@ export const ChatProvider = ({ children }) => {
 
   const deleteChat = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/v1/chatbot/conversation/${id}`);
+      await axios.delete(
+        `http://localhost:3000/api/v1/chatbot/conversation/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt_token")}`,
+          },
+        }
+      );
       setChats((prevChats) => prevChats.filter((chat) => chat.id !== id));
     } catch (error) {
       console.error("Error deleting chat:", error);
@@ -79,9 +117,17 @@ export const ChatProvider = ({ children }) => {
 
   const updateChat = async (id, message) => {
     try {
-      const response = await axios.put(`http://localhost:3000/api/v1/chatbot/conversation/${id}`, {
-        prompt: message
-      });
+      const response = await axios.put(
+        `http://localhost:3000/api/v1/chatbot/conversation/${id}`,
+        {
+          prompt: message,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt_token")}`,
+          },
+        }
+      );
       
       const timestamp = new Date().toISOString();
       const newMessages = [
@@ -104,7 +150,7 @@ export const ChatProvider = ({ children }) => {
   };
 
   return (
-    <ChatContext.Provider value={{ chats, addChat, deleteChat, updateChat, setChats}}>
+    <ChatContext.Provider value={{ chats, addChat, deleteChat, updateChat, setChats,setIsLoggedin,isLoggedin}}>
       {loading ? (
         <div className="flex justify-center items-center h-screen">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900"></div>

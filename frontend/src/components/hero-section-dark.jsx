@@ -2,10 +2,6 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 import { useNavigate } from 'react-router';
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-
-import { DialogTitle } from "@radix-ui/react-dialog";
-import { Signup } from "@/pages/Signup";
 
 const RetroGrid = ({
   angle = 65,
@@ -53,7 +49,7 @@ const HeroSection = React.forwardRef((
   ref,
 ) => {
   const navigate = useNavigate();
-
+  // const {isLoggedin} =
   const handleChatbotNavigation = () => {
     navigate('/dashboard/chatbot');
   };
